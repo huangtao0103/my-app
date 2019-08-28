@@ -11,6 +11,10 @@ import Messages from '../pages/ui/Messages';
 import Tab from '../pages/ui/Tab';
 import Gallery from '../pages/ui/Gallery';
 import Carousels from '../pages/ui/Carousels';
+import FormLogin from '../pages/form/login';
+import FormReg from '../pages/form/reg';
+import Basic from '../pages/table/Basic';
+import High from '../pages/table/High';
 import NoMatch from '../pages/NoMatch';
 
 
@@ -31,6 +35,10 @@ class IRouter extends Component {
                                 <Route path='/ui/tabs' component={Tab}></Route>
                                 <Route path='/ui/gallery' component={Gallery}></Route>
                                 <Route path='/ui/carousel' component={Carousels}></Route>
+                                <Route path='/form/login' component={FormLogin}></Route>
+                                <Route path='/form/reg' component={FormReg}></Route>
+                                <Route path='/table/basic' component={Basic}></Route>
+                                <Route path='/table/high' component={High}></Route>
                                 <Route component={NoMatch}></Route>
                             </Switch>    
                         </Admin>
