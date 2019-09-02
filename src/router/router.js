@@ -15,7 +15,9 @@ import FormLogin from '../pages/form/login';
 import FormReg from '../pages/form/reg';
 import Basic from '../pages/table/Basic';
 import High from '../pages/table/High';
+import Rich from '../pages/rich/Rich';
 import NoMatch from '../pages/NoMatch';
+import City from '../pages/city/index';
 
 
 class IRouter extends Component {
@@ -38,7 +40,10 @@ class IRouter extends Component {
                                 <Route path='/form/login' component={FormLogin}></Route>
                                 <Route path='/form/reg' component={FormReg}></Route>
                                 <Route path='/table/basic' component={Basic}></Route>
+                                
                                 <Route path='/table/high' component={High}></Route>
+                                <Route path='/rich' component={Rich}></Route>
+                                <Route path='/city' component={City}></Route>
                                 <Route component={NoMatch}></Route>
                             </Switch>    
                         </Admin>
