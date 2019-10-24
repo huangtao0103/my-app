@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Card, Button, Table, Form, Select} from 'antd'
+import {Card, Button, Table, Form, Select, Modal, Input} from 'antd'
 import axios from '../../axios/index'
 import Utils from '../../utils/utils'
 
@@ -9,7 +9,8 @@ const { Option } = Select;
 class City extends Component {
 
     state = {
-        list: []
+        list: [],
+        isShowOpenCity: false
     }
 
     params = {
@@ -22,7 +23,10 @@ class City extends Component {
 
     // 开通城市
     handleOpenCity = () => {
-        
+        console.log('1212')
+        this.setState({
+            isShowOpenCity: true
+        })
     }
 
     // 获取列表数据
@@ -100,14 +104,19 @@ class City extends Component {
                 <Card>
                     <FilteForm></FilteForm>
                 </Card>
-                <Card>
-                    <Button type='primary' onClick={this.handleOpenCity}>开通城市</Button>
+                <Card style={{marginTop: 10}}>
+                    <Button type='primary' onClick={() => {this.handleOpenCity()}}>开通城市</Button>
                 </Card>
                 <div className='content-wrap'>
                 <Table
                     {...tatleProps}
                 ></Table>
                 </div>
+                <Modal title='开通城市'
+                    onCancel={() => {this.setState({isShowOpenCity: false})}}
+                 visible={this.state.isShowOpenCity}>
+                     <OpenCityForm></OpenCityForm>
+                </Modal>
             </div>
         );
     }
@@ -175,3 +184,32 @@ class FilteForm extends Component {
     }
 }
 FilteForm = Form.create({})(FilteForm)
+
+// 开通城市表单
+class OpenCityForm extends Component {
+    render() {
+        const { getFieldDecorator } = this.props.form
+
+        const formLayoutProps = {
+            labelCol: {
+                span:5
+            },
+            wrapperCol: {
+                span: 10
+            }
+        } 
+        return (
+            <Form layout='horizontal'>
+                <FormItem label='城市' {...formLayoutProps}>
+                            <Select placeholder='全部'>
+                                <Option value=''>全部</Option>
+                                <Option value='1'>指定停车点模式</Option>
+                                <Option value='2'>禁停区模式</Option>
+                            </Select>
+                </FormItem>
+            </Form>
+        )
+    }
+}
+
+OpenCityForm = Form.create({})(OpenCityForm)
